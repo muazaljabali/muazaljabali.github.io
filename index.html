@@ -263,17 +263,19 @@
   <main class="flex-grow">
     <section id="home" class="min-h-screen flex items-center justify-center bg-kemet-sand print:hidden" tabindex="-1"
       aria-label="Home">
-      <div class="container mx-auto px-4 sm:px-6 text-center flex flex-col items-center justify-center">
+      <div class="container mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center">
         <img src="profile.png" alt="Muaz Maher Al-Jabali profile picture"
           class="mx-auto mb-6 w-40 h-40 object-cover rounded-full border-4 border-kemet-blue shadow-pixel"
           loading="lazy" />
-        <h1 class="font-pixel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-kemet-blue mb-4 leading-tight">
-          Muaz Maher Al-Jabali
+        <h1
+          class="font-pixel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-kemet-blue mb-4 leading-tight w-full flex flex-col items-center justify-center text-center">
+          <span class="block w-full text-center">Muaz Maher</span>
+          <span class="block w-full text-center">Al-Jabali</span>
         </h1>
-        <p class="text-md sm:text-lg md:text-xl text-kemet-charcoal mb-8 max-w-2xl mx-auto">
+        <p class="text-md sm:text-lg md:text-xl text-kemet-charcoal mb-8 max-w-2xl mx-auto text-center">
           Computer & Data Science Student | Aspiring Developer
         </p>
-        <div class="flex flex-row items-center justify-center gap-8 mb-6">
+        <div class="flex flex-row items-center justify-center gap-8 mb-6 mx-auto">
           <a href="https://github.com/muazaljabali" target="_blank" rel="noopener noreferrer"
             class="social-link text-kemet-blue hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-full p-2"
             aria-label="GitHub profile">
@@ -691,21 +693,39 @@
         const contactForm = document.getElementById(CONTACT_FORM_ID);
         if (!contactForm) return;
         contactForm.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent page navigation
           showFormStatus(
             "Sending your message...",
             "text-center mt-4 text-kemet-blue font-medium"
           );
-        });
-        contactForm.addEventListener("submit", function (e) {
-          contactForm.addEventListener("submit", function (e) {
-            setTimeout(() => {
+          const formData = new FormData(contactForm);
+          fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                showFormStatus(
+                  "Thank you for your message! I'll get back to you soon.",
+                  "text-center mt-4 text-kemet-green font-medium"
+                );
+                contactForm.reset();
+              } else {
+                showFormStatus(
+                  "Sorry, there was a problem sending your message. Please try again later.",
+                  "text-center mt-4 text-red-600 font-medium"
+                );
+              }
+            })
+            .catch(() => {
               showFormStatus(
-                "Thank you for your message! I'll get back to you soon.",
-                "text-center mt-4 text-kemet-green font-medium"
+                "Sorry, there was a problem sending your message. Please try again later.",
+                "text-center mt-4 text-red-600 font-medium"
               );
-              contactForm.reset();
-            }, 1500);
-          });
+            });
         });
       }
 
@@ -909,10 +929,6 @@
       setupNavStyles();
     });
   </script>
-</body>
-
-</html>
-</script>
 </body>
 
 </html>
