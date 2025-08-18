@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muaz Maher Al-Jabali | Computer & Data Science Student</title>
+    <meta
+      name="description"
+      content="Portfolio of Muaz Maher Al-Jabali, a Computer & Data Science student at Alexandria University specializing in machine learning, web/app development, and game design."
+    />
+    <meta
+      name="keywords"
+      content="Muaz Al-Jabali, Data Science, Computer Science, Alexandria University, Machine Learning, Android Development, Web Development, Game Development, Portfolio"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              pixel: ['"Press Start 2P"', "cursive"],
+            },
+            colors: {
+              "kemet-gold": "#FFC72C",
+              "kemet-blue": "#003366",
+              "kemet-sand": "#F0EAD6",
+              "kemet-charcoal": "#1E293B",
+              "kemet-green": "#4CAF50",
+              "kemet-green-dark": "#388E3C",
+            },
+            boxShadow: {
+              pixel: "4px 4px 0px #1E293B",
+              "pixel-hover": "6px 6px 0px #1E293B",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f0ead6;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #003366;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ffc72c;
+      }
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s, transform 0.6s;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .skill-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        font-size: 1.75rem;
+        color: #003366;
+      }
+      .project-card {
+        transition: all 0.3s;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        background: #f0f8ff;
+      }
+      .project-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .project-tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        background: rgba(255, 199, 44, 0.3);
+        color: #1e293b;
+      }
+      .project-status {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        align-self: flex-start;
+      }
+      .status-active {
+        background: #4caf50;
+        color: white;
+      }
+      .status-future {
+        background: #ffc72c;
+        color: #1e293b;
+      }
+      .contact-button {
+        background: #388e3c;
+        color: #fff;
+        border: 2px solid #1e293b;
+      }
+      .contact-button:hover,
+      .contact-button:focus {
+        background: #4caf50;
+        color: #fff;
+      }
+      *:focus-visible {
+        outline: 3px solid #ffc72c;
+        outline-offset: 2px;
+      }
+      a,
+      button {
+        transition: all 0.2s;
+      }
+      #mobile-menu {
+        background: #f0ead6;
+        border-top: 2px solid #1e293b;
+        border-bottom: 2px solid #1e293b;
+      }
+      .project-image {
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        width: 100%;
+      }
+      .pixel-art {
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+      }
+      @media (max-width: 640px) {
+        .project-card {
+          min-width: 0;
+        }
+        .project-content {
+          padding: 1rem;
+        }
+      }
+      @media print {
+        body * {
+          visibility: hidden !important;
+        }
+        #resume-section,
+        #resume-section * {
+          visibility: visible !important;
+        }
+        #resume-section {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          background: #fff !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-kemet-sand text-kemet-charcoal font-sans antialiased flex flex-col min-h-screen"
+  >
+    <header
+      id="header"
+      class="bg-kemet-sand/80 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-kemet-charcoal print:hidden"
+    >
+      <div
+        class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="font-pixel text-lg md:text-xl text-kemet-blue hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+          aria-label="Go to home"
+          aria-current="page"
+        >
+          Al-Jabali
+        </a>
+        <nav
+          class="hidden md:flex space-x-6 items-center justify-center"
+          aria-label="Main navigation"
+        >
+          <a
+            href="#about"
+            class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+            >Projects</a
+          >
+          <a
+            href="#resume"
+            class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+            >Resume</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300"
+            >Contact</a
+          >
+        </nav>
+        <div class="hidden md:block">
+          <a
+            href="mailto:muaz.aljabali@gmail.com"
+            class="text-base font-bold text-kemet-blue underline hover:text-kemet-gold transition-colors duration-200"
+          >
+            muaz.aljabali@gmail.com
+          </a>
+        </div>
+        <button
+          id="mobileMenuButton"
+          type="button"
+          class="md:hidden text-kemet-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md p-1"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden"
+        aria-label="Mobile navigation"
+      >
+        <a
+          href="#about"
+          class="mobile-nav-link block py-3 px-6 text-sm hover:bg-kemet-gold/20 focus:bg-kemet-gold/20 focus-visible:outline-none transition-colors duration-200"
+          >About</a
+        >
+        <a
+          href="#skills"
+          class="mobile-nav-link block py-3 px-6 text-sm hover:bg-kemet-gold/20 focus:bg-kemet-gold/20 focus-visible:outline-none transition-colors duration-200"
+          >Skills</a
+        >
+        <a
+          href="#projects"
+          class="mobile-nav-link block py-3 px-6 text-sm hover:bg-kemet-gold/20 focus:bg-kemet-gold/20 focus-visible:outline-none transition-colors duration-200"
+          >Projects</a
+        >
+        <a
+          href="#resume"
+          class="mobile-nav-link block py-3 px-6 text-sm hover:bg-kemet-gold/20 focus:bg-kemet-gold/20 focus-visible:outline-none transition-colors duration-200"
+          >Resume</a
+        >
+        <a
+          href="#contact"
+          class="mobile-nav-link block py-3 px-6 text-sm hover:bg-kemet-gold/20 focus:bg-kemet-gold/20 focus-visible:outline-none transition-colors duration-200"
+          >Contact</a
+        >
+      </div>
+    </header>
+    <main class="flex-grow">
+      <section
+        id="home"
+        class="min-h-screen flex items-center justify-center bg-kemet-sand print:hidden"
+        tabindex="-1"
+        aria-label="Home"
+      >
+        <div
+          class="container mx-auto px-4 sm:px-6 text-center flex flex-col items-center justify-center"
+        >
+          <img
+            src="profile.png"
+            alt="Muaz Maher Al-Jabali profile picture"
+            class="mx-auto mb-6 w-40 h-40 object-cover rounded-full border-4 border-kemet-blue shadow-pixel"
+            loading="lazy"
+          />
+          <h1
+            class="font-pixel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-kemet-blue mb-4 leading-tight"
+          >
+            Muaz Maher Al-Jabali
+          </h1>
+          <p
+            class="text-md sm:text-lg md:text-xl text-kemet-charcoal mb-8 max-w-2xl mx-auto"
+          >
+            Computer & Data Science Student | Aspiring Developer
+          </p>
+          <div class="flex flex-row items-center justify-center gap-8 mb-6">
+            <a
+              href="https://github.com/muazaljabali"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link text-kemet-blue hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-full p-2"
+              aria-label="GitHub profile"
+            >
+              <i
+                class="fab fa-github text-2xl sm:text-3xl"
+                aria-hidden="true"
+              ></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/muazaljabali/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link text-kemet-blue hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-full p-2"
+              aria-label="LinkedIn profile"
+            >
+              <i
+                class="fab fa-linkedin text-2xl sm:text-3xl"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        id="about"
+        class="py-16 lg:py-24 bg-white fade-in-section"
+        aria-label="About Me"
+      >
+        <div class="container mx-auto px-4 sm:px-6">
+          <h2
+            class="font-pixel text-2xl md:text-3xl text-center text-kemet-blue mb-10"
+          >
+            About Me
+          </h2>
+          <div
+            class="max-w-3xl mx-auto text-kemet-charcoal leading-relaxed space-y-4"
+          >
+            <p>
+              I'm a passionate Data Science student building a diverse technical
+              toolkit across machine learning, statistical analysis, and data
+              visualization. Currently studying at Alexandria University, I'm
+              constantly expanding my knowledge and skills in the ever-evolving
+              field of computer science.
+            </p>
+            <p>
+              Alongside my studies, I'm actively developing skills in Android
+              Development (Kotlin), Full-Stack Web Development (JavaScript), and
+              Retro 2D Pixel-Art Game Development (Java). I thrive on turning
+              complex problems into elegant solutions.
+            </p>
+            <p>
+              I enjoy blending creativity with problem-solving and turning ideas
+              into working products. I'm always open to opportunities,
+              collaborations, and mentorship to further grow in this exciting
+              field.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        id="skills"
+        class="py-16 lg:py-24 bg-kemet-sand fade-in-section"
+        aria-label="Skills"
+      >
+        <div class="container mx-auto px-4 sm:px-6">
+          <h2
+            class="font-pixel text-2xl md:text-3xl text-center text-kemet-blue mb-12"
+          >
+            My Skills
+          </h2>
+          <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+              <div class="md:w-1/2">
+                <h3 class="font-pixel text-xl text-center text-kemet-blue mb-8">
+                  Technical
+                </h3>
+                <div
+                  class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 text-center"
+                >
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-java"></i></div>
+                    <span>Java</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <span>HTML5</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <span>CSS3</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
+                    <span>JavaScript</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <span>React.js</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                    <span>Node.js</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-android"></i></div>
+                    <span>Kotlin</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <span>Python</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-database"></i>
+                    </div>
+                    <span>SQL</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span>Data Analysis</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hidden md:flex flex-col justify-center items-center">
+                <div class="h-full flex items-center">
+                  <div
+                    class="w-px h-[700px] bg-kemet-charcoal opacity-30"
+                  ></div>
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <h3 class="font-pixel text-xl text-center text-kemet-blue mb-8">
+                  Soft
+                </h3>
+                <div
+                  class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 text-center"
+                >
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <span>Problem-Solving</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-people-group"></i>
+                    </div>
+                    <span>Collaboration</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-paintbrush"></i>
+                    </div>
+                    <span>Creativity</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  >
+                    <div class="skill-icon">
+                      <i class="fas fa-comments"></i>
+                    </div>
+                    <span>Communication</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="projects"
+        class="py-16 md:p-20 lg:p-32 bg-white fade-in-section"
+        tabindex="-1"
+        aria-label="Projects"
+      >
+        <div class="container mx-auto px-4 sm:px-6">
+          <h2
+            class="font-pixel text-3xl md:text-4xl text-center text-kemet-blue mb-10 md:mb-12"
+          >
+            Projects
+          </h2>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto"
+          >
+            <div
+              class="project-card bg-kemet-sand rounded-lg border-2 border-kemet-charcoal shadow-pixel overflow-hidden group"
+            >
+              <div class="p-6">
+                <h3 class="font-pixel text-xl text-kemet-blue mb-2">
+                  Echoes of Kemet
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded"
+                    >Java</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded"
+                    >Pixel Art</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded"
+                    >Game Dev</span
+                  >
+                </div>
+                <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
+                  A 2D retro-style adventure game inspired by ancient Egyptian
+                  mythology. Built with Java, it features pixel-art graphics and
+                  classic platformer mechanics.
+                </p>
+                <a
+                  href="https://github.com/muazaljabali/EchoesOfKemet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block text-kemet-blue font-bold"
+                >
+                  View on GitHub &rarr;
+                </a>
+              </div>
+            </div>
+            <div
+              class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70"
+            >
+              <div class="p-6">
+                <h3 class="font-pixel text-xl text-kemet-blue mb-2">
+                  Web App Project
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >React</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Node.js</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >MongoDB</span
+                  >
+                </div>
+                <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
+                  A full-stack web application for modern business analytics and
+                  dashboards.
+                </p>
+                <span
+                  class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed"
+                >
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+            <div
+              class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70"
+            >
+              <div class="p-6">
+                <h3 class="font-pixel text-xl text-kemet-blue mb-2">
+                  Android App Project
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Kotlin</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Android</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Firebase</span
+                  >
+                </div>
+                <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
+                  An intuitive productivity app to help users organize tasks and
+                  track progress.
+                </p>
+                <span
+                  class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed"
+                >
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+            <div
+              class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70"
+            >
+              <div class="p-6">
+                <h3 class="font-pixel text-xl text-kemet-blue mb-2">
+                  Data Science Project
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Machine Learning</span
+                  >
+                  <span
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    >Data Analysis</span
+                  >
+                </div>
+                <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
+                  A data-driven project focused on predictive analytics and
+                  visualization.
+                </p>
+                <span
+                  class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed"
+                >
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="resume"
+        class="py-16 lg:py-24 bg-kemet-sand fade-in-section print:py-0"
+        aria-label="Resume"
+      >
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+          <h2
+            class="font-pixel text-2xl md:text-3xl text-center text-kemet-blue mb-8"
+          >
+            My Resume
+          </h2>
+          <p class="max-w-2xl mx-auto text-kemet-charcoal mb-8">
+            For a more detailed look at my experience, coursework, and
+            qualifications, please feel free to download my resume.
+          </p>
+          <div class="flex justify-center gap-4">
+            <a
+              href="cv.pdf"
+              id="resume-download"
+              download
+              class="inline-block bg-kemet-blue text-white font-bold py-3 px-8 rounded-lg border-2 border-kemet-charcoal shadow-pixel hover:bg-kemet-gold hover:text-kemet-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold focus-visible:ring-offset-2 transition-all duration-300 hover:shadow-pixel-hover hover:-translate-y-1"
+              aria-label="Download CV"
+            >
+              Download
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        id="contact"
+        class="py-16 lg:py-24 bg-white fade-in-section"
+        aria-label="Contact"
+      >
+        <div class="container mx-auto px-4 sm:px-6">
+          <h2
+            class="font-pixel text-2xl md:text-3xl text-center text-kemet-blue mb-12"
+          >
+            Get In Touch
+          </h2>
+          <div class="max-w-lg mx-auto">
+            <form
+              action="#"
+              method="POST"
+              id="contact-form"
+              class="space-y-4 bg-kemet-sand/60 border-2 border-kemet-charcoal rounded-xl shadow-pixel px-6 py-8"
+              autocomplete="off"
+              novalidate
+              aria-label="Contact form"
+            >
+              <div>
+                <label
+                  for="name"
+                  class="block text-kemet-charcoal mb-2 font-medium"
+                  >Name <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  aria-required="true"
+                  aria-label="Your name"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-kemet-charcoal mb-2 font-medium"
+                  >Email <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  aria-required="true"
+                  aria-label="Your email"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-kemet-charcoal mb-2 font-medium"
+                  >Message <span class="text-red-500">*</span></label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  aria-required="true"
+                  aria-label="Your message"
+                ></textarea>
+              </div>
+              <div class="text-center pt-2">
+                <button
+                  type="submit"
+                  class="contact-button font-bold py-3 px-8 rounded-lg shadow-pixel transition-all duration-300 hover:shadow-pixel-hover hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold focus-visible:ring-offset-2"
+                  aria-label="Send Message"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+            <div
+              id="form-status"
+              class="text-center mt-4"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="bg-kemet-charcoal text-kemet-sand py-8 print:hidden"
+      role="contentinfo"
+    >
+      <div class="container mx-auto px-4 sm:px-6 text-center">
+        <p class="text-sm">
+          &copy; <span id="year"></span> Muaz Maher Al-Jabali. All Rights
+          Reserved.
+        </p>
+        <p class="text-xs mt-2 opacity-75">
+          Designed and developed with <span aria-label="love">❤️</span>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const YEAR_ELEMENT_ID = "year";
+        const MOBILE_MENU_BUTTON_ID = "mobileMenuButton";
+        const MOBILE_MENU_ID = "mobile-menu";
+        const CONTACT_FORM_ID = "contact-form";
+        const FORM_STATUS_ID = "form-status";
+        const SCROLL_OFFSET = 80;
+        const FADE_IN_THRESHOLD = 0.15;
+        const FORM_STATUS_TIMEOUT = 5000;
+        const FORM_SEND_DELAY = 1500;
+
+        function setCurrentYear() {
+          const yEl = document.getElementById(YEAR_ELEMENT_ID);
+          if (yEl) yEl.textContent = new Date().getFullYear();
+        }
+
+        function toggleMobileMenu() {
+          const mobileMenuButton = document.getElementById(
+            MOBILE_MENU_BUTTON_ID
+          );
+          const mobileMenu = document.getElementById(MOBILE_MENU_ID);
+          if (!mobileMenuButton || !mobileMenu) return;
+          const isExpanded =
+            mobileMenuButton.getAttribute("aria-expanded") === "true";
+          mobileMenu.classList.toggle("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
+        }
+
+        function closeMobileMenu() {
+          const mobileMenuButton = document.getElementById(
+            MOBILE_MENU_BUTTON_ID
+          );
+          const mobileMenu = document.getElementById(MOBILE_MENU_ID);
+          if (!mobileMenuButton || !mobileMenu) return;
+          mobileMenu.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
+
+        function setupMobileMenu() {
+          const mobileMenuButton = document.getElementById(
+            MOBILE_MENU_BUTTON_ID
+          );
+          const mobileMenu = document.getElementById(MOBILE_MENU_ID);
+          if (!mobileMenuButton || !mobileMenu) return;
+          mobileMenuButton.addEventListener("click", toggleMobileMenu);
+          const links = mobileMenu.querySelectorAll("a");
+          links.forEach((link) => {
+            link.addEventListener("click", closeMobileMenu);
+          });
+          document.addEventListener("click", (e) => {
+            if (
+              !mobileMenu.contains(e.target) &&
+              !mobileMenuButton.contains(e.target) &&
+              !mobileMenu.classList.contains("hidden")
+            ) {
+              closeMobileMenu();
+            }
+          });
+        }
+
+        function setupFadeInSections() {
+          const fadeSections = document.querySelectorAll(".fade-in-section");
+          if (!("IntersectionObserver" in window)) {
+            fadeSections.forEach((s) => s.classList.add("is-visible"));
+            return;
+          }
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting)
+                  entry.target.classList.add("is-visible");
+              });
+            },
+            { threshold: FADE_IN_THRESHOLD }
+          );
+          fadeSections.forEach((section) => observer.observe(section));
+        }
+
+        function showFormStatus(message, className) {
+          const formStatus = document.getElementById(FORM_STATUS_ID);
+          if (!formStatus) return;
+          formStatus.textContent = message;
+          formStatus.className = className;
+        }
+
+        function setupContactForm() {
+          const contactForm = document.getElementById(CONTACT_FORM_ID);
+          if (!contactForm) return;
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            showFormStatus(
+              "Sending your message...",
+              "text-center mt-4 text-kemet-blue font-medium"
+            );
+            setTimeout(() => {
+              showFormStatus(
+                "Thank you for your message! I'll get back to you soon.",
+                "text-center mt-4 text-kemet-green font-medium"
+              );
+              contactForm.reset();
+              setTimeout(() => {
+                showFormStatus("", "");
+              }, FORM_STATUS_TIMEOUT);
+            }, FORM_SEND_DELAY);
+          });
+        }
+
+        function scrollToSection(targetId) {
+          const targetElement = document.querySelector(targetId);
+          if (!targetElement) return;
+          const scrollY =
+            window.scrollY +
+            targetElement.getBoundingClientRect().top -
+            SCROLL_OFFSET;
+          window.scrollTo({ top: scrollY, behavior: "smooth" });
+          targetElement.setAttribute("tabindex", "-1");
+          targetElement.focus({ preventScroll: true });
+        }
+
+        function setupSmoothScrolling() {
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+              const targetId = this.getAttribute("href");
+              if (targetId === "#" || !document.querySelector(targetId)) return;
+              e.preventDefault();
+              scrollToSection(targetId);
+            });
+          });
+        }
+
+        function setupResumeActions() {
+          const printButton = document.getElementById("resume-print");
+          if (printButton) {
+            printButton.addEventListener("click", function () {
+              window.print();
+            });
+          }
+        }
+
+        function formatCvHtml(cv) {
+          function section(title, content) {
+            return `<div class="mb-4"><h4 class="font-pixel text-base text-kemet-blue mb-2">${title}</h4>${content}</div>`;
+          }
+          let html = "";
+          if (cv && cv.personal) {
+            html += section(
+              "Personal",
+              `
+              <ul>
+                <li><strong>Name:</strong> ${cv.personal.name || ""}</li>
+                <li><strong>Email:</strong> <a href="mailto:${
+                  cv.personal.email || ""
+                }" class="underline text-kemet-blue">${
+                cv.personal.email || ""
+              }</a></li>
+                <li><strong>Location:</strong> ${
+                  cv.personal.location || ""
+                }</li>
+                <li><strong>Website:</strong> ${
+                  cv.personal.website
+                    ? `<a href="${cv.personal.website}" target="_blank" class="underline text-kemet-blue">${cv.personal.website}</a>`
+                    : ""
+                }</li>
+                <li><strong>LinkedIn:</strong> ${
+                  cv.personal.linkedin
+                    ? `<a href="${cv.personal.linkedin}" target="_blank" class="underline text-kemet-blue">Profile</a>`
+                    : ""
+                }</li>
+                <li><strong>GitHub:</strong> ${
+                  cv.personal.github
+                    ? `<a href="${cv.personal.github}" target="_blank" class="underline text-kemet-blue">Profile</a>`
+                    : ""
+                }</li>
+              </ul>
+            `
+            );
+          }
+          if (cv && Array.isArray(cv.education)) {
+            html += section(
+              "Education",
+              cv.education
+                .map(
+                  (ed) =>
+                    `<div class="mb-2">
+                <strong>${ed.degree || ""}</strong> - ${
+                      ed.institution || ""
+                    } <span class="text-xs text-kemet-charcoal">(${
+                      ed.years || ""
+                    })</span>
+                ${
+                  Array.isArray(ed.details)
+                    ? `<ul class="list-disc ml-6">${ed.details
+                        .map((d) => `<li>${d}</li>`)
+                        .join("")}</ul>`
+                    : ""
+                }
+              </div>`
+                )
+                .join("")
+            );
+          }
+          if (cv && cv.skills) {
+            html += section(
+              "Skills",
+              `
+              <div class="mb-2"><strong>Technical:</strong> ${(
+                cv.skills.technical || []
+              ).join(", ")}</div>
+              <div><strong>Soft:</strong> ${(cv.skills.soft || []).join(
+                ", "
+              )}</div>
+            `
+            );
+          }
+          if (cv && Array.isArray(cv.projects)) {
+            html += section(
+              "Projects",
+              cv.projects
+                .map(
+                  (pr) =>
+                    `<div class="mb-2">
+                <strong>${
+                  pr.name || ""
+                }</strong> <span class="text-xs text-kemet-charcoal">${(
+                      pr.tags || []
+                    ).join(", ")}</span><br>
+                <span>${pr.description || ""}</span>
+                ${
+                  pr.url
+                    ? `<br><a href="${pr.url}" target="_blank" class="underline text-kemet-blue">GitHub</a>`
+                    : ""
+                }
+                ${
+                  pr.status
+                    ? `<span class="ml-2 px-2 py-1 rounded bg-kemet-gold/30 text-kemet-charcoal text-xs">${pr.status}</span>`
+                    : ""
+                }
+              </div>`
+                )
+                .join("")
+            );
+          }
+          if (cv && Array.isArray(cv.languages)) {
+            html += section("Languages", cv.languages.join(", "));
+          }
+          return html;
+        }
+
+        function setupAstCvModal() {
+          const astCvBtn = document.getElementById("view-ast-cv");
+          const astCvModal = document.getElementById("ast-cv-modal");
+          const astCvContent = document.getElementById("ast-cv-content");
+          const closeAstCv = document.getElementById("close-ast-cv");
+          if (!astCvBtn || !astCvModal || !astCvContent || !closeAstCv) return;
+          astCvBtn.addEventListener("click", function () {
+            fetch("Muaz_Al_Jabali_CV.json")
+              .then((res) => res.json())
+              .then((data) => {
+                astCvContent.innerHTML = formatCvHtml(data);
+                astCvModal.classList.remove("hidden");
+              })
+              .catch(() => {
+                astCvContent.innerHTML =
+                  "<div class='text-red-600'>Failed to load CV JSON.</div>";
+                astCvModal.classList.remove("hidden");
+              });
+          });
+          closeAstCv.addEventListener("click", function () {
+            astCvModal.classList.add("hidden");
+          });
+          astCvModal.addEventListener("click", function (e) {
+            if (e.target === astCvModal) astCvModal.classList.add("hidden");
+          });
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") astCvModal.classList.add("hidden");
+          });
+        }
+
+        function setupNavStyles() {
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.add(
+              "text-sm",
+              "font-semibold",
+              "tracking-wider",
+              "uppercase",
+              "hover:text-kemet-gold",
+              "focus-visible:outline-none",
+              "focus-visible:ring-2",
+              "focus-visible:ring-kemet-gold",
+              "rounded-md",
+              "transition-colors",
+              "duration-300"
+            );
+          });
+          document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+            link.classList.add(
+              "block",
+              "py-3",
+              "px-6",
+              "text-sm",
+              "hover:bg-kemet-gold/20",
+              "focus:bg-kemet-gold/20",
+              "focus-visible:outline-none",
+              "transition-colors",
+              "duration-200"
+            );
+          });
+        }
+
+        setCurrentYear();
+        setupMobileMenu();
+        setupFadeInSections();
+        setupContactForm();
+        setupSmoothScrolling();
+        setupResumeActions();
+        setupAstCvModal();
+        setupNavStyles();
+      });
+    </script>
+  </body>
+</html>
