@@ -181,6 +181,69 @@
       image-rendering: crisp-edges;
     }
 
+    .field-button {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: #ffffff;
+      border: 2px solid #1e293b;
+      color: #1e293b;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+      box-shadow: 4px 4px 0px #1E293B;
+    }
+
+    .field-button:hover,
+    .field-button:focus {
+      transform: translateY(-4px) scale(1.02);
+      background: #ffc72c;
+      color: #001e3c;
+      box-shadow: 6px 6px 0px #1E293B;
+      outline: none;
+    }
+
+    .field-button:active {
+      transform: translateY(-2px) scale(0.995);
+    }
+
+    .field-button[aria-pressed="true"],
+    .field-button.active {
+      background: #003366;
+      color: #ffc72c;
+      box-shadow: 8px 8px 0px #1E293B;
+    }
+
+    .skill-highlight {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(2, 6, 23, 0.12);
+      background: linear-gradient(180deg, rgba(255, 199, 44, 0.12), rgba(255, 199, 44, 0.06));
+      border-color: #ffc72c;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .skills-grid {
+      grid-auto-rows: 1fr;
+    }
+
+    .skills-grid>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      min-height: 150px;
+    }
+
+    .skills-grid+.hidden.md\:flex .w-px {
+      height: 900px;
+    }
+
     @media (max-width: 640px) {
       .project-card {
         min-width: 0;
@@ -229,7 +292,7 @@
         <a href="#projects"
           class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300">Projects</a>
         <a href="#resume"
-          class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300">Resume</a>
+          class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300">Résumé</a>
         <a href="#contact"
           class="nav-link text-sm font-semibold tracking-wider uppercase hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300">Contact</a>
       </nav>
@@ -287,6 +350,33 @@
             <i class="fab fa-linkedin text-2xl sm:text-3xl" aria-hidden="true"></i>
           </a>
         </div>
+        <section id="fields" class="py-4 w-full fade-in-section">
+          <div class="flex flex-col items-center justify-center text-center">
+            <ul class="list-none flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <li>
+                <button type="button" class="field-button" data-field="android-development" aria-pressed="false">
+                  Android Development
+                </button>
+              </li>
+              <li>
+                <button type="button" class="field-button opacity-70 border-dashed" data-field="full-stack-development"
+                  aria-pressed="false">
+                  Full-Stack Development
+                </button>
+              </li>
+              <li>
+                <button type="button" class="field-button" data-field="data-science" aria-pressed="false">
+                  Data Science
+                </button>
+              </li>
+              <li>
+                <button type="button" class="field-button" data-field="game-development" aria-pressed="false">
+                  Game Development
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
       </div>
     </section>
     <section id="about" class="py-16 lg:py-24 bg-white fade-in-section" aria-label="About Me">
@@ -323,67 +413,71 @@
           My Skills
         </h2>
         <div class="max-w-5xl mx-auto">
-          <div class="flex flex-col md:flex-row gap-12 items-center md:items-start justify-center">
-            <div class="md:w-1/2 w-full sm:mx-auto md:mx-0">
+          <div class="flex flex-col md:flex-row gap-12 items-center md:items-stretch justify-center">
+            <div class="md:w-1/2 w-full sm:mx-auto md:mx-0 h-full">
               <h3 class="font-pixel text-xl text-center text-kemet-blue mb-8">
                 Technical
               </h3>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
+              <div class="grid grid-cols-3 gap-4 sm:gap-6 text-center skills-grid h-full">
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon"><i class="fab fa-java"></i></div>
-                  <span>Java</span>
-                </div>
-                <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-html5"></i></div>
                   <span>HTML5</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fab fa-css3-alt"></i>
-                  </div>
+                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  data-fields="full-stack-development">
+                  <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                   <span>CSS3</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-js"></i></div>
                   <span>JavaScript</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-react"></i></div>
                   <span>React.js</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-                  <span>Node.js</span>
+                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  data-fields="full-stack-development">
+                  <div class="skill-icon"><i class="fab fa-react"></i></div>
+                  <span>Next.js</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon"><i class="fab fa-android"></i></div>
-                  <span>Kotlin</span>
-                </div>
-                <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  data-fields="data-science">
                   <div class="skill-icon"><i class="fab fa-python"></i></div>
                   <span>Python</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-database"></i>
-                  </div>
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  data-fields="data-science">
+                  <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                  <span>R</span>
+                </div>
+                <div
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  data-fields="data-science">
+                  <div class="skill-icon"><i class="fas fa-database"></i></div>
                   <span>SQL</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-chart-line"></i>
-                  </div>
-                  <span>Data Analysis</span>
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  data-fields="android-development">
+                  <div class="skill-icon"><i class="fab fa-android"></i></div>
+                  <span>Kotlin</span>
+                </div>
+                <div
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                  data-fields="game-development">
+                  <div class="skill-icon"><i class="fab fa-java"></i></div>
+                  <span>Java</span>
                 </div>
               </div>
             </div>
@@ -392,38 +486,40 @@
                 <div class="w-px h-[700px] bg-kemet-charcoal opacity-30"></div>
               </div>
             </div>
-            <div class="md:w-1/2 w-full sm:mx-auto md:mx-0">
+            <div class="md:w-1/2 w-full sm:mx-auto md:mx-0 h-full">
               <h3 class="font-pixel text-xl text-center text-kemet-blue mb-8">
                 Soft
               </h3>
-              <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 text-center">
+              <div class="grid grid-cols-3 gap-4 sm:gap-6 text-center skills-grid h-full">
                 <div
                   class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-lightbulb"></i>
-                  </div>
+                  <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
                   <span>Problem-Solving</span>
                 </div>
                 <div
                   class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-people-group"></i>
-                  </div>
-                  <span>Collaboration</span>
+                  <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                  <span>Critical Thinking</span>
                 </div>
                 <div
                   class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-paintbrush"></i>
-                  </div>
+                  <div class="skill-icon"><i class="fas fa-paintbrush"></i></div>
                   <span>Creativity</span>
                 </div>
                 <div
                   class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
-                  <div class="skill-icon">
-                    <i class="fas fa-comments"></i>
-                  </div>
-                  <span>Communication</span>
+                  <div class="skill-icon"><i class="fas fa-user-check"></i></div>
+                  <span>Adaptability</span>
+                </div>
+                <div
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  <div class="skill-icon"><i class="fas fa-chess-king"></i></div>
+                  <span>Leadership</span>
+                </div>
+                <div
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center">
+                  <div class="skill-icon"><i class="fas fa-clock"></i></div>
+                  <span>Time Management</span>
                 </div>
               </div>
             </div>
@@ -445,10 +541,6 @@
               </h3>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded">Java</span>
-                <span class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded">Pixel
-                  Art</span>
-                <span class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded">Game
-                  Dev</span>
               </div>
               <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
                 A 2D retro-style adventure game inspired by ancient Egyptian
@@ -465,66 +557,54 @@
             class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70">
             <div class="p-6">
               <h3 class="font-pixel text-xl text-kemet-blue mb-2">
-                Web App Project
+                Web App
               </h3>
               <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">React</span>
+                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">HTML5</span>
+                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">CSS3</span>
                 <span
-                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Node.js</span>
+                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">JavaScript</span>
                 <span
-                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">MongoDB</span>
+                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">React.js</span>
+                <span
+                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Next.js</span>
               </div>
               <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
                 A full-stack web application for modern business analytics and
                 dashboards.
               </p>
-              <span class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed">
-                Coming Soon
-              </span>
             </div>
           </div>
           <div
             class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70">
             <div class="p-6">
               <h3 class="font-pixel text-xl text-kemet-blue mb-2">
-                Android App Project
+                Android App
               </h3>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Kotlin</span>
-                <span
-                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Android</span>
-                <span
-                  class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Firebase</span>
               </div>
               <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
                 An intuitive productivity app to help users organize tasks and
                 track progress.
               </p>
-              <span class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed">
-                Coming Soon
-              </span>
             </div>
           </div>
           <div
             class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70">
             <div class="p-6">
               <h3 class="font-pixel text-xl text-kemet-blue mb-2">
-                Data Science Project
+                Data Science
               </h3>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Python</span>
-                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Machine
-                  Learning</span>
-                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">Data
-                  Analysis</span>
+                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">R</span>
+                <span class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded">SQL</span>
               </div>
               <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
                 A data-driven project focused on predictive analytics and
                 visualization.
               </p>
-              <span class="inline-block text-kemet-blue font-bold opacity-60 cursor-not-allowed">
-                Coming Soon
-              </span>
             </div>
           </div>
         </div>
@@ -533,11 +613,11 @@
     <section id="resume" class="py-16 lg:py-24 bg-kemet-sand fade-in-section print:py-0" aria-label="Resume">
       <div class="container mx-auto px-4 sm:px-6 text-center">
         <h2 class="font-pixel text-2xl md:text-3xl text-center text-kemet-blue mb-8">
-          My Resume
+          My Résumé
         </h2>
         <p class="max-w-2xl mx-auto text-kemet-charcoal mb-8">
           For a more detailed look at my experience, coursework, and
-          qualifications, please feel free to download my resume.
+          qualifications, please feel free to download my Résumé.
         </p>
         <div class="flex justify-center gap-4">
           <a href="cv.pdf" id="resume-download" download
@@ -693,7 +773,7 @@
         const contactForm = document.getElementById(CONTACT_FORM_ID);
         if (!contactForm) return;
         contactForm.addEventListener("submit", function (e) {
-          e.preventDefault(); // Prevent page navigation
+          e.preventDefault();
           showFormStatus(
             "Sending your message...",
             "text-center mt-4 text-kemet-blue font-medium"
@@ -919,6 +999,44 @@
         });
       }
 
+      function setupFieldButtons() {
+        const buttons = document.querySelectorAll(".field-button");
+        if (!buttons || !buttons.length) return;
+        let highlightTimer = null;
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            buttons.forEach((b) => {
+              b.setAttribute("aria-pressed", "false");
+              b.classList.remove("active");
+            });
+            this.setAttribute("aria-pressed", "true");
+            this.classList.add("active");
+
+            const field = this.dataset.field;
+            scrollToSection("#skills");
+
+            const skillCards = document.querySelectorAll("[data-fields]");
+            skillCards.forEach((card) => {
+              const fields = (card.dataset.fields || "").split(",").map(s => s.trim());
+              if (fields.includes(field)) {
+                card.classList.add("skill-highlight");
+              } else {
+                card.classList.remove("skill-highlight");
+              }
+            });
+
+            if (highlightTimer) clearTimeout(highlightTimer);
+            highlightTimer = setTimeout(() => {
+              buttons.forEach((b) => {
+                b.setAttribute("aria-pressed", "false");
+                b.classList.remove("active");
+              });
+              skillCards.forEach((card) => card.classList.remove("skill-highlight"));
+            }, 1500);
+          });
+        });
+      }
+
       setCurrentYear();
       setupMobileMenu();
       setupFadeInSections();
@@ -927,6 +1045,7 @@
       setupResumeActions();
       setupAstCvModal();
       setupNavStyles();
+      setupFieldButtons();
     });
   </script>
 </body>
