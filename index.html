@@ -221,14 +221,15 @@
     }
 
     .skill-highlight {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 24px rgba(2, 6, 23, 0.12);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 12px 24px rgba(2, 6, 23, 0.16);
       background: linear-gradient(180deg,
-          rgba(255, 199, 44, 0.12),
-          rgba(255, 199, 44, 0.06));
+          rgba(255, 199, 44, 0.18),
+          rgba(255, 199, 44, 0.10));
       border-color: #ffc72c;
-      transition: transform 0.18s ease, box-shadow 0.18s ease,
-        border-color 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.18s cubic-bezier(0.4, 0.0, 0.2, 1),
+        border-color 0.18s cubic-bezier(0.4, 0.0, 0.2, 1), background 0.18s cubic-bezier(0.4, 0.0, 0.2, 1);
+      will-change: transform, box-shadow, background, border-color;
     }
 
     .skills-grid {
@@ -242,6 +243,9 @@
       align-items: center;
       height: auto;
       min-height: 150px;
+      transition: transform 0.18s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.18s cubic-bezier(0.4, 0.0, 0.2, 1),
+        border-color 0.18s cubic-bezier(0.4, 0.0, 0.2, 1), background 0.18s cubic-bezier(0.4, 0.0, 0.2, 1);
+      will-change: transform, box-shadow, background, border-color;
     }
 
     .skills-grid+.hidden.md\:flex .w-px {
@@ -385,7 +389,7 @@
           class="mx-auto mb-6 w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full border-4 border-kemet-blue shadow-pixel"
           loading="lazy" />
         <h1
-          class="font-pixel text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-kemet-blue mb-4 leading-tight w-full flex flex-col items-center justify-center text-center">
+          class="font-pixel text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-kemet-blue mb-4 leading-tight w-full text-center flex flex-col items-center justify-center">
           <span class="block w-full text-center">Muaz Maher</span>
           <span class="block w-full text-center">Al-Jabali</span>
         </h1>
@@ -413,8 +417,7 @@
                 </button>
               </li>
               <li>
-                <button type="button" class="field-button opacity-70 border-dashed" data-field="full-stack-development"
-                  aria-pressed="false">
+                <button type="button" class="field-button" data-field="full-stack-development" aria-pressed="false">
                   Full-Stack Development
                 </button>
               </li>
@@ -474,13 +477,13 @@
               </h3>
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 text-center skills-grid h-full">
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
                   data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-html5"></i></div>
                   <span>HTML5</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
                   data-fields="full-stack-development">
                   <div class="skill-icon">
                     <i class="fab fa-css3-alt"></i>
@@ -488,19 +491,19 @@
                   <span>CSS3</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
                   data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-js"></i></div>
                   <span>JavaScript</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
                   data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-react"></i></div>
                   <span>React.js</span>
                 </div>
                 <div
-                  class="bg-white p-4 sm:p-6 rounded-lg border-dashed border-kemet-charcoal shadow-pixel opacity-70 flex flex-col items-center"
+                  class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
                   data-fields="full-stack-development">
                   <div class="skill-icon"><i class="fab fa-react"></i></div>
                   <span>Next.js</span>
@@ -758,10 +761,14 @@
       const MOBILE_MENU_ID = "mobile-menu";
       const CONTACT_FORM_ID = "contact-form";
       const FORM_STATUS_ID = "form-status";
-      const SCROLL_OFFSET = 80;
       const FADE_IN_THRESHOLD = 0.15;
       const FORM_STATUS_TIMEOUT = 5000;
       const FORM_SEND_DELAY = 1500;
+      function getHeaderOffset() {
+        const header = document.getElementById("header");
+        if (!header) return 0;
+        return Math.ceil(header.getBoundingClientRect().height);
+      }
 
       function setCurrentYear() {
         const yEl = document.getElementById(YEAR_ELEMENT_ID);
@@ -880,11 +887,15 @@
       function scrollToSection(targetId) {
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
-        const scrollY =
-          window.scrollY +
-          targetElement.getBoundingClientRect().top -
-          SCROLL_OFFSET;
-        window.scrollTo({ top: scrollY, behavior: "smooth" });
+        const headerOffset = getHeaderOffset();
+        const targetRect = targetElement.getBoundingClientRect();
+        const desiredTop = window.scrollY + targetRect.top - headerOffset;
+        const maxScroll = Math.max(
+          0,
+          document.documentElement.scrollHeight - window.innerHeight
+        );
+        const finalTop = Math.max(0, Math.min(desiredTop, maxScroll));
+        window.scrollTo({ top: finalTop, behavior: "smooth" });
         targetElement.setAttribute("tabindex", "-1");
         targetElement.focus({ preventScroll: true });
       }
@@ -1090,8 +1101,10 @@
                 .map((s) => s.trim());
               if (fields.includes(field)) {
                 card.classList.add("skill-highlight");
+                card.classList.remove("skill-fadeout");
               } else {
                 card.classList.remove("skill-highlight");
+                card.classList.remove("skill-fadeout");
               }
             });
 
@@ -1101,10 +1114,10 @@
                 b.setAttribute("aria-pressed", "false");
                 b.classList.remove("active");
               });
-              skillCards.forEach((card) =>
-                card.classList.remove("skill-highlight")
-              );
-            }, 1500);
+              skillCards.forEach((card) => {
+                card.classList.remove("skill-highlight");
+              });
+            }, 1000);
           });
         });
       }
