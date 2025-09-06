@@ -1,4 +1,5 @@
 tailwind.config = {
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -12,10 +13,20 @@ tailwind.config = {
         "kemet-charcoal": "#1E293B",
         "kemet-green": "#4CAF50",
         "kemet-green-dark": "#388E3C",
+        "dark-bg-primary": "#0F0F0F",
+        "dark-bg-secondary": "#1A1A1A",
+        "dark-text-primary": "#F5F5F5",
+        "dark-text-secondary": "#D1D1D1",
+        "dark-text-muted": "#A3A3A3",
+        "dark-border": "#404040",
+        "dark-accent": "#60A5FA",
+        "dark-accent-hover": "#3B82F6",
       },
       boxShadow: {
         pixel: "4px 4px 0px #1E293B",
         "pixel-hover": "6px 6px 0px #1E293B",
+        "dark-pixel": "4px 4px 0px #404040",
+        "dark-pixel-hover": "6px 6px 0px #404040",
       },
     },
   },

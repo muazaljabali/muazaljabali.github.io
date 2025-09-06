@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muaz Maher Al-Jabali | Computer & Data Science Student</title>
+    <title>Muaz Maher Al-Jabali | Aspiring Data Scientist</title>
     <meta
       name="description"
-      content="Portfolio of Muaz Maher Al-Jabali, a Computer & Data Science student at Alexandria University specializing in machine learning, web/app development, and game design."
+      content="Portfolio of Muaz Maher Al-Jabali, an aspiring Data Scientist at Alexandria University specializing in machine learning, with Full Stack and Android development skills for freelancing opportunities."
     />
     <meta
       name="keywords"
-      content="Muaz Al-Jabali, Data Science, Computer Science, Alexandria University, Machine Learning, Android Development, Web Development, Game Development, Portfolio"
+      content="Muaz Al-Jabali, Data Scientist, Computer Science, Full Stack Developer, Alexandria University, Machine Learning, Android Mobile App Developer, Web Development, Portfolio"
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,14 +31,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body
-    class="bg-kemet-sand text-kemet-charcoal font-sans antialiased flex flex-col min-h-screen"
+    class="bg-kemet-sand text-kemet-charcoal font-sans antialiased flex flex-col min-h-screen dark:bg-dark-bg-primary dark:text-dark-text-primary transition-colors duration-300"
   >
     <header
       id="header"
-      class="bg-kemet-sand/80 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-kemet-charcoal print:hidden"
+      class="bg-kemet-sand/80 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-kemet-charcoal print:hidden dark:bg-dark-bg-secondary/80 dark:border-dark-border"
     >
       <div
-        class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center max-w-full"
+        class="container mx-auto px-4 sm:px-6 py-3 flex items-center max-w-full"
       >
         <a
           href="#home"
@@ -48,55 +48,122 @@
           >Al-Jabali</a
         >
         <nav
-          class="hidden md:flex space-x-6 items-center justify-end ml-auto"
+          class="hidden md:flex space-x-6 items-center ml-8"
           aria-label="Main navigation"
         >
-          <a href="#about" class="nav-link">About</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#resume" class="nav-link">Résumé</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-        <button
-          id="mobileMenuButton"
-          type="button"
-          class="md:hidden text-kemet-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md p-1"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+          <a
+            href="#about"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >About</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+          <a
+            href="#education"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >Certifications</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >Projects</a
+          >
+          <a
+            href="#resume"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >Résumé</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-kemet-charcoal hover:text-kemet-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md transition-colors duration-300 dark:text-dark-text-secondary dark:hover:text-dark-accent dark:focus-visible:ring-dark-accent"
+            >Contact</a
+          >
+        </nav>
+        <div class="flex items-center gap-2 ml-auto">
+          <button
+            id="themeToggle"
+            aria-label="Toggle light/dark mode"
+            class="relative w-14 h-8 p-0.5 bg-white border-2 border-kemet-charcoal rounded-full shadow-pixel overflow-hidden transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel"
+          >
+            <span
+              id="themeSwitchKnob"
+              class="absolute left-1 top-0.5 w-6 h-6 bg-kemet-blue rounded-full transition-all duration-300 flex items-center justify-center dark:bg-dark-accent"
+            >
+              <i
+                class="fa fa-sun text-xs text-white dark:text-dark-bg-primary"
+                id="knobIcon"
+              ></i>
+            </span>
+          </button>
+          <button
+            id="mobileMenuButton"
+            type="button"
+            class="md:hidden text-kemet-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold rounded-md p-1 dark:text-dark-accent dark:focus-visible:ring-dark-accent"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
       </div>
       <div
         id="mobile-menu"
         class="hidden md:hidden"
         aria-label="Mobile navigation"
       >
-        <a href="#about" class="mobile-nav-link block py-3 px-6">About</a>
-        <a href="#skills" class="mobile-nav-link block py-3 px-6">Skills</a>
-        <a href="#projects" class="mobile-nav-link block py-3 px-6">Projects</a>
-        <a href="#resume" class="mobile-nav-link block py-3 px-6">Resume</a>
-        <a href="#contact" class="mobile-nav-link block py-3 px-6">Contact</a>
+        <a
+          href="#about"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >About</a
+        >
+        <a
+          href="#education"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >Certifications</a
+        >
+        <a
+          href="#skills"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >Skills</a
+        >
+        <a
+          href="#projects"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >Projects</a
+        >
+        <a
+          href="#resume"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >Resume</a
+        >
+        <a
+          href="#contact"
+          class="mobile-nav-link block py-3 px-6 text-kemet-charcoal hover:text-kemet-gold dark:text-dark-text-secondary dark:hover:text-dark-accent"
+          >Contact</a
+        >
       </div>
     </header>
     <main class="flex-grow">
       <section
         id="home"
-        class="h-auto py-24 flex items-center justify-center bg-kemet-sand print:hidden"
+        class="h-auto py-12 sm:py-16 flex items-center justify-center bg-kemet-sand print:hidden dark:bg-dark-bg-secondary"
         tabindex="-1"
         aria-label="Home"
       >
@@ -106,7 +173,7 @@
           <img
             src="profile.png"
             alt="Muaz Maher Al-Jabali profile picture"
-            class="mx-auto mb-6 w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full border-4 border-kemet-blue shadow-pixel"
+            class="mx-auto mb-6 w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full border-4 border-kemet-blue shadow-pixel dark:border-dark-accent dark:shadow-dark-pixel"
             loading="lazy"
           />
           <h1
@@ -116,9 +183,9 @@
             <span class="block w-full text-center">Al-Jabali</span>
           </h1>
           <p
-            class="text-sm sm:text-lg md:text-xl text-kemet-charcoal mb-8 max-w-2xl mx-auto text-center"
+            class="text-sm sm:text-lg md:text-xl text-kemet-charcoal mb-8 max-w-2xl mx-auto text-center dark:text-dark-text-secondary"
           >
-            Computer & Data Science Student | Aspiring Developer
+            Aspiring Data Scientist | Full Stack & Android Developer
           </p>
           <div
             class="flex flex-row items-center justify-center gap-6 sm:gap-8 mb-6 mx-auto"
@@ -127,7 +194,7 @@
               href="https://github.com/muazaljabali"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2"
+              class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2 dark:text-dark-accent dark:hover:text-dark-accent-hover"
               aria-label="GitHub profile"
               ><i
                 class="fab fa-github text-2xl sm:text-3xl"
@@ -137,7 +204,7 @@
             <span class="relative email-icon-wrapper">
               <a
                 href="mailto:muaz.aljabali@gmail.com"
-                class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2"
+                class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2 dark:text-dark-accent dark:hover:text-dark-accent-hover"
                 aria-label="Email Muaz Al-Jabali"
                 tabindex="0"
                 id="email-icon"
@@ -155,7 +222,7 @@
               href="https://www.linkedin.com/in/muazaljabali/"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2"
+              class="social-link text-kemet-blue hover:text-kemet-gold rounded-full p-2 dark:text-dark-accent dark:hover:text-dark-accent-hover"
               aria-label="LinkedIn profile"
               ><i
                 class="fab fa-linkedin text-2xl sm:text-3xl"
@@ -163,49 +230,50 @@
               ></i
             ></a>
           </div>
-          <section id="fields" class="py-4 w-full fade-in-section">
+          <section id="fields" class="py-8 w-full fade-in-section">
             <div class="flex flex-col items-center justify-center text-center">
-              <ul
-                class="list-none flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
-              >
-                <li>
+              <div class="career-path-container relative">
+                <div
+                  class="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center w-full mt-4 mb-8"
+                >
                   <button
                     type="button"
                     class="field-button"
                     data-field="data-science"
                     aria-pressed="false"
                   >
-                    Data Science
+                    Data Scientist
                   </button>
-                </li>
-                <li>
                   <button
                     type="button"
                     class="field-button"
-                    data-field="game-development"
+                    data-field="full-stack"
                     aria-pressed="false"
                   >
-                    Game Development
+                    Full Stack Developer
                   </button>
-                </li>
-                <li>
                   <button
                     type="button"
                     class="field-button"
                     data-field="android-development"
                     aria-pressed="false"
                   >
-                    Android Development
+                    Android Mobile App Developer
                   </button>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </section>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
       <section
         id="about"
-        class="py-10 sm:py-16 lg:py-24 bg-white fade-in-section"
+        class="py-8 sm:py-12 lg:py-16 bg-white fade-in-section dark:bg-dark-bg-primary"
         aria-label="About Me"
       >
         <div class="container mx-auto px-4 sm:px-6 max-w-full">
@@ -215,23 +283,105 @@
             About Me
           </h2>
           <div
-            class="max-w-3xl mx-auto text-kemet-charcoal leading-relaxed space-y-3 sm:space-y-4 text-base sm:text-lg"
+            class="max-w-3xl mx-auto text-kemet-charcoal leading-relaxed space-y-3 sm:space-y-4 text-base sm:text-lg dark:text-dark-text-secondary"
           >
             <p>
               I'm a passionate Data Science student at Alexandria University,
               specializing in machine learning, statistical analysis, and data
-              visualization. I also enjoy developing retro 2D pixel-art games in
-              Java and building Android apps with Kotlin. My focus is on
-              blending creativity and problem-solving to turn ideas into
-              impactful products, and I'm always eager to learn, collaborate,
-              and grow in the field of computer and data science.
+              visualization. My primary career focus is becoming a Data
+              Scientist, while I leverage Full Stack development and Android app
+              development as complementary skills that open doors to freelancing
+              and online opportunities. I enjoy blending creativity and
+              problem-solving to turn data insights into impactful solutions,
+              and I'm always eager to learn, collaborate, and grow in the field
+              of data science.
             </p>
           </div>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
+
+      <section
+        id="education"
+        class="py-8 sm:py-12 lg:py-16 bg-kemet-sand fade-in-section dark:bg-dark-bg-secondary"
+        aria-label="Certifications"
+      >
+        <div class="container mx-auto px-4 sm:px-6 max-w-full">
+          <h2
+            class="font-pixel text-xl sm:text-2xl md:text-3xl text-center text-kemet-blue mb-8 sm:mb-10"
+          >
+            Certifications
+          </h2>
+          <div
+            class="max-w-3xl mx-auto text-kemet-charcoal space-y-6 text-base sm:text-lg dark:text-dark-text-secondary"
+          >
+            <div
+              class="bg-white rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6"
+            >
+              <div class="flex items-center justify-between min-w-0">
+                <div class="min-w-0">
+                  <span
+                    class="font-pixel text-base text-kemet-blue truncate block min-w-0"
+                    >Computer and Data Science<br /><span
+                      class="text-kemet-blue ml-6"
+                      >Alexandria University</span
+                    ></span
+                  >
+                </div>
+                <img
+                  src="alexu.png"
+                  alt="Alexandria University Logo"
+                  style="
+                    height: 3.5em;
+                    width: auto;
+                    display: inline;
+                    vertical-align: middle;
+                    margin-left: 1rem;
+                    flex-shrink: 0;
+                  "
+                />
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6"
+            >
+              <div class="flex items-center justify-between min-w-0">
+                <span
+                  class="font-pixel text-base text-kemet-blue truncate block min-w-0"
+                  >Android Mobile App Development<br /><span
+                    class="text-kemet-blue ml-6"
+                    >Digital Egypt Pioneers Initiative</span
+                  ></span
+                >
+                <img
+                  src="depi.png"
+                  alt="DEPI Logo"
+                  style="
+                    height: 3.5em;
+                    width: auto;
+                    display: inline;
+                    vertical-align: middle;
+                    margin-left: 1rem;
+                    flex-shrink: 0;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
       <section
         id="skills"
-        class="py-10 sm:py-14 lg:py-16 bg-kemet-sand fade-in-section"
+        class="py-8 sm:py-12 lg:py-14 bg-white fade-in-section dark:bg-dark-bg-primary"
         aria-label="Skills"
       >
         <div class="container mx-auto px-4 sm:px-6 max-w-full">
@@ -245,7 +395,7 @@
           >
             <div class="w-full md:w-1/2">
               <div
-                class="rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6 sm:p-10 bg-kemet-sand flex flex-col h-full"
+                class="rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6 sm:p-10 bg-kemet-sand flex flex-col h-full dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel"
               >
                 <h3
                   class="font-pixel text-lg sm:text-xl text-center text-kemet-blue mb-6 sm:mb-8"
@@ -256,14 +406,14 @@
                   class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 text-center skills-grid h-full"
                 >
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                     data-fields="data-science"
                   >
                     <div class="skill-icon"><i class="fab fa-python"></i></div>
                     <span>Python</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                     data-fields="data-science"
                   >
                     <div class="skill-icon">
@@ -272,7 +422,7 @@
                     <span>R</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                     data-fields="data-science"
                   >
                     <div class="skill-icon">
@@ -281,25 +431,64 @@
                     <span>SQL</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                     data-fields="game-development"
                   >
                     <div class="skill-icon"><i class="fab fa-java"></i></div>
                     <span>Java</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                     data-fields="android-development"
                   >
                     <div class="skill-icon"><i class="fab fa-android"></i></div>
                     <span>Kotlin</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
+                    data-fields="full-stack"
+                  >
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <span>HTML5</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
+                    data-fields="full-stack"
+                  >
+                    <div class="skill-icon">
+                      <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <span>CSS3</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
+                    data-fields="full-stack"
+                  >
+                    <div class="skill-icon">
+                      <i class="fab fa-js-square"></i>
+                    </div>
+                    <span>JavaScript</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
+                    data-fields="full-stack"
+                  >
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <span>React</span>
+                  </div>
+                  <div
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
+                    data-fields="full-stack"
+                  >
+                    <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                    <span>Node.js</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="w-full md:w-1/2">
               <div
-                class="rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6 sm:p-10 bg-kemet-sand flex flex-col h-full"
+                class="rounded-lg border-2 border-kemet-charcoal shadow-pixel p-6 sm:p-10 bg-kemet-sand flex flex-col h-full dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel"
               >
                 <h3
                   class="font-pixel text-lg sm:text-xl text-center text-kemet-blue mb-6 sm:mb-8"
@@ -310,7 +499,7 @@
                   class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 text-center skills-grid h-full"
                 >
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                   >
                     <div class="skill-icon">
                       <i class="fas fa-lightbulb"></i>
@@ -318,13 +507,13 @@
                     <span>Problem Solving</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                   >
                     <div class="skill-icon"><i class="fas fa-brain"></i></div>
                     <span>Critical Thinking</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                   >
                     <div class="skill-icon">
                       <i class="fas fa-paintbrush"></i>
@@ -332,7 +521,7 @@
                     <span>Creativity</span>
                   </div>
                   <div
-                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center"
+                    class="bg-white p-4 sm:p-6 rounded-lg border-2 border-kemet-charcoal shadow-pixel transition-shadow duration-300 hover:shadow-pixel-hover select-none cursor-default flex flex-col items-center dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel dark:hover:shadow-dark-pixel-hover"
                   >
                     <div class="skill-icon"><i class="fas fa-clock"></i></div>
                     <span>Time Management</span>
@@ -343,9 +532,14 @@
           </div>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
       <section
         id="projects"
-        class="py-10 sm:py-16 md:p-20 lg:p-32 bg-white fade-in-section"
+        class="py-8 sm:py-12 md:py-16 lg:py-20 bg-kemet-sand fade-in-section dark:bg-dark-bg-secondary"
         tabindex="-1"
         aria-label="Projects"
       >
@@ -359,7 +553,7 @@
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6 md:gap-10 max-w-7xl mx-auto grid-auto-rows-fr"
           >
             <div
-              class="project-card bg-kemet-sand rounded-lg border-2 border-kemet-charcoal shadow-pixel overflow-hidden group"
+              class="project-card bg-white rounded-lg border-2 border-kemet-charcoal shadow-pixel overflow-hidden group"
             >
               <div class="p-6">
                 <h3 class="font-pixel text-xl text-kemet-blue mb-2">
@@ -367,11 +561,13 @@
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-4">
                   <span
-                    class="text-xs font-semibold bg-kemet-gold/50 text-kemet-charcoal px-2 py-1 rounded"
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded dark:bg-blue-500/40 dark:text-dark-text-secondary"
                     >Java</span
                   >
                 </div>
-                <p class="text-kemet-charcoal mb-4 text-sm leading-relaxed">
+                <p
+                  class="text-kemet-charcoal mb-4 text-sm leading-relaxed dark:text-dark-text-secondary"
+                >
                   A 2D pixel platformer where players explore temples, ports,
                   and museums to symbolically reclaim lost Egyptian antiquities,
                   solving puzzles, dodging traps, and uncovering historical
@@ -381,31 +577,31 @@
                   href="https://gitfront.io/r/muazaljabali/C15vfmQ2zmW4/HeartOfKemet/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-block text-kemet-blue font-bold"
+                  class="inline-block text-kemet-blue font-bold dark:text-dark-accent"
                   >View on GitFront &rarr;</a
                 >
               </div>
             </div>
             <div
-              class="project-card bg-kemet-sand rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70"
+              class="project-card bg-white rounded-lg border-2 border-dashed border-kemet-charcoal shadow-pixel overflow-hidden group opacity-70"
             >
               <div class="p-6">
                 <h3 class="font-pixel text-xl text-kemet-blue mb-2">Arkebeh</h3>
                 <div class="flex flex-wrap gap-2 mb-4">
                   <span
-                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded dark:bg-blue-500/40 dark:text-dark-text-secondary"
                     >Kotlin</span
                   >
                   <span
-                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded dark:bg-blue-500/40 dark:text-dark-text-secondary"
                     >Python</span
                   >
                   <span
-                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded dark:bg-blue-500/40 dark:text-dark-text-secondary"
                     >R</span
                   >
                   <span
-                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded"
+                    class="text-xs font-semibold bg-kemet-gold/30 text-kemet-charcoal px-2 py-1 rounded dark:bg-blue-500/40 dark:text-dark-text-secondary"
                     >SQL</span
                   >
                 </div>
@@ -428,9 +624,14 @@
           </p>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
       <section
         id="resume"
-        class="py-10 sm:py-16 lg:py-24 bg-kemet-sand fade-in-section print:py-0"
+        class="py-8 sm:py-12 lg:py-16 bg-white fade-in-section print:py-0 dark:bg-dark-bg-primary"
         aria-label="Resume"
       >
         <div
@@ -459,7 +660,7 @@
             <a
               href="cv.html"
               id="resume-view"
-              class="inline-block bg-transparent text-kemet-blue font-bold py-3 px-8 rounded-lg border-2 border-kemet-charcoal shadow-pixel hover:bg-kemet-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold focus-visible:ring-offset-2 transition-all duration-300"
+              class="inline-block bg-transparent text-kemet-blue font-bold py-3 px-8 rounded-lg border-2 border-kemet-charcoal shadow-pixel hover:scale-105 hover:shadow-pixel-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kemet-gold focus-visible:ring-offset-2 transition-all duration-300"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View CV"
@@ -468,9 +669,14 @@
           </div>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
       <section
         id="contact"
-        class="py-10 sm:py-16 lg:py-24 bg-white fade-in-section"
+        class="py-8 sm:py-12 lg:py-16 bg-kemet-sand fade-in-section dark:bg-dark-bg-secondary"
         aria-label="Contact"
       >
         <div class="container mx-auto px-2 sm:px-4 md:px-6 max-w-full">
@@ -484,14 +690,14 @@
               action="https://formspree.io/f/mnnzyklz"
               method="POST"
               id="contact-form"
-              class="space-y-3 sm:space-y-4 bg-kemet-sand/60 border-2 border-kemet-charcoal rounded-xl shadow-pixel px-4 sm:px-6 py-6 sm:py-8"
+              class="space-y-3 sm:space-y-4 bg-white border-2 border-kemet-charcoal rounded-xl shadow-pixel px-4 sm:px-6 py-6 sm:py-8 dark:bg-dark-bg-secondary dark:border-dark-border dark:shadow-dark-pixel"
               autocomplete="off"
               aria-label="Contact form"
             >
               <div>
                 <label
                   for="name"
-                  class="block text-kemet-charcoal mb-2 font-medium"
+                  class="block text-kemet-charcoal mb-2 font-medium dark:text-dark-text-primary"
                   >Name <span class="text-red-500">*</span></label
                 >
                 <input
@@ -499,7 +705,7 @@
                   id="name"
                   name="name"
                   required
-                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  class="w-full px-4 py-3 bg-white border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent dark:bg-dark-bg-secondary dark:border-dark-border dark:text-dark-text-primary dark:focus:ring-dark-accent"
                   aria-required="true"
                   aria-label="Your name"
                 />
@@ -507,7 +713,7 @@
               <div>
                 <label
                   for="email"
-                  class="block text-kemet-charcoal mb-2 font-medium"
+                  class="block text-kemet-charcoal mb-2 font-medium dark:text-dark-text-primary"
                   >Email <span class="text-red-500">*</span></label
                 >
                 <input
@@ -515,7 +721,7 @@
                   id="email"
                   name="email"
                   required
-                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  class="w-full px-4 py-3 bg-white border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent dark:bg-dark-bg-secondary dark:border-dark-border dark:text-dark-text-primary dark:focus:ring-dark-accent"
                   aria-required="true"
                   aria-label="Your email"
                 />
@@ -523,7 +729,7 @@
               <div>
                 <label
                   for="message"
-                  class="block text-kemet-charcoal mb-2 font-medium"
+                  class="block text-kemet-charcoal mb-2 font-medium dark:text-dark-text-primary"
                   >Message <span class="text-red-500">*</span></label
                 >
                 <textarea
@@ -531,7 +737,7 @@
                   name="message"
                   rows="5"
                   required
-                  class="w-full px-4 py-3 bg-kemet-sand border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent"
+                  class="w-full px-4 py-3 bg-white border-2 border-kemet-charcoal rounded-lg focus:outline-none focus:ring-2 focus:ring-kemet-gold focus:border-transparent dark:bg-dark-bg-secondary dark:border-dark-border dark:text-dark-text-primary dark:focus:ring-dark-accent"
                   aria-required="true"
                   aria-label="Your message"
                 ></textarea>
@@ -555,15 +761,20 @@
           </div>
         </div>
       </section>
+      <div class="container mx-auto px-4 sm:px-6 max-w-full">
+        <div
+          class="border-t border-kemet-charcoal/20 dark:border-dark-border/30"
+        ></div>
+      </div>
     </main>
     <footer
-      class="bg-kemet-charcoal text-kemet-sand py-3 print:hidden"
+      class="bg-kemet-charcoal text-kemet-sand py-3 print:hidden dark:bg-dark-bg-secondary dark:text-dark-text-secondary"
       role="contentinfo"
     >
       <div
         class="container mx-auto px-2 sm:px-4 md:px-6 text-center max-w-full"
       >
-        <p class="text-xs mt-2 opacity-75">
+        <p class="text-xs mt-2" style="color: #fff !important">
           Designed and developed with <span aria-label="love">❤️</span>
         </p>
       </div>

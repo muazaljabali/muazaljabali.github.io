@@ -1,4 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.getElementById("themeToggle");
+  const themeSwitchKnob = document.getElementById("themeSwitchKnob");
+  const knobIcon = document.getElementById("knobIcon");
+  const root = document.documentElement;
+  function setTheme(dark) {
+    if (dark) {
+      root.classList.add("dark");
+      themeSwitchKnob.style.transform = "translateX(20px)";
+      knobIcon.className = "fa fa-moon text-xs text-dark-bg-primary";
+    } else {
+      root.classList.remove("dark");
+      themeSwitchKnob.style.transform = "translateX(0)";
+      knobIcon.className = "fa fa-sun text-xs text-white";
+    }
+  }
+  let dark = localStorage.getItem("theme") === "dark";
+  setTheme(dark);
+  themeToggle.addEventListener("click", function () {
+    dark = !dark;
+    setTheme(dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
   const YEAR_ELEMENT_ID = "year";
   const MOBILE_MENU_BUTTON_ID = "mobileMenuButton";
   const MOBILE_MENU_ID = "mobile-menu";
