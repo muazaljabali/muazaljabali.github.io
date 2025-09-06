@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       knobIcon.className = "fa fa-sun text-xs text-white";
     }
   }
-  let dark = localStorage.getItem("theme") === "dark";
+  let dark = localStorage.getItem("theme") !== "light";
   setTheme(dark);
   themeToggle.addEventListener("click", function () {
     dark = !dark;
