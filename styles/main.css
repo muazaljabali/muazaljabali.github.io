@@ -722,3 +722,18 @@ button {
 #home:not(.home-expanded):not(.home-collapsed) {
   min-height: 70vh;
 }
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  #home.home-collapsed {
+    min-height: 60vh;
+  }
+
+  #home.home-expanded {
+    min-height: 80vh;
+  }
+
+  #home:not(.home-expanded):not(.home-collapsed) {
+    min-height: 60vh;
+  }
+}
