@@ -397,26 +397,31 @@ document.addEventListener("DOMContentLoaded", function () {
   function setupAdditionalFieldsToggle() {
     const toggleButton = document.getElementById("toggle-additional-fields");
     const additionalFields = document.getElementById("additional-fields");
-    
-    if (!toggleButton || !additionalFields) return;
-    
+    const homeSection = document.getElementById("home");
+
+    if (!toggleButton || !additionalFields || !homeSection) return;
+
     let isExpanded = false; // Start as collapsed since fields are initially hidden
-    
+
     toggleButton.addEventListener("click", function(e) {
       e.preventDefault();
       isExpanded = !isExpanded;
-      
+
       if (isExpanded) {
-        // Show additional fields with animation
+        // Show additional fields with animation and expand home section
         additionalFields.classList.remove("opacity-0");
         additionalFields.classList.add("opacity-100");
+        homeSection.classList.add("home-expanded");
+        homeSection.classList.remove("home-collapsed");
         toggleButton.setAttribute("aria-expanded", "true");
         toggleButton.setAttribute("aria-label", "Hide additional fields");
         toggleButton.classList.add("revealed");
       } else {
-        // Hide additional fields with animation
+        // Hide additional fields with animation and shrink home section
         additionalFields.classList.remove("opacity-100");
         additionalFields.classList.add("opacity-0");
+        homeSection.classList.add("home-collapsed");
+        homeSection.classList.remove("home-expanded");
         toggleButton.setAttribute("aria-expanded", "false");
         toggleButton.setAttribute("aria-label", "Discover more");
         toggleButton.classList.remove("revealed");

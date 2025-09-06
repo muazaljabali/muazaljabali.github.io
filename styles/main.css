@@ -704,3 +704,21 @@ button {
   pointer-events: auto;
   user-select: auto;
 }
+
+/* Home section dynamic height */
+#home {
+  transition: min-height 0.5s ease-in-out;
+}
+
+#home.home-collapsed {
+  min-height: 70vh;
+}
+
+#home.home-expanded {
+  min-height: 90vh;
+}
+
+/* Default state - collapsed */
+#home:not(.home-expanded):not(.home-collapsed) {
+  min-height: 70vh;
+}
