@@ -98,22 +98,132 @@ document.addEventListener("DOMContentLoaded", function () {
     fadeSections.forEach((section) => observer.observe(section));
   }
 
-  function showFormStatus(message, className) {
-    const formStatus = document.getElementById(FORM_STATUS_ID);
-    if (!formStatus) return;
-    formStatus.textContent = message;
-    formStatus.className = className;
+  function validateField(field) {
+    if (!field) return true;
+
+    const value = field.value.trim();
+    const fieldName = field.name;
+    let isValid = true;
+    let errorMessage = "";
+
+    clearFieldError(field);
+
+    switch (fieldName) {
+      case "name":
+        if (!value) {
+          errorMessage = "Name is required";
+          isValid = false;
+        } else if (value.length < 2) {
+          errorMessage = "Name must be at least 2 characters long";
+          isValid = false;
+        }
+        break;
+
+      case "email":
+        if (!value) {
+          errorMessage = "Email is required";
+          isValid = false;
+        } else {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            errorMessage = "Please enter a valid email address";
+            isValid = false;
+          }
+        }
+        break;
+
+      case "message":
+        if (!value) {
+          errorMessage = "Message is required";
+          isValid = false;
+        } else if (value.length < 10) {
+          errorMessage = "Message must be at least 10 characters long";
+          isValid = false;
+        }
+        break;
+    }
+
+    if (!isValid) {
+      showFieldError(field, errorMessage);
+    }
+
+    return isValid;
+  }
+
+  function showFieldError(field, message) {
+    if (!field) return;
+
+    field.classList.add("border-red-500", "focus:ring-red-500");
+    field.classList.remove(
+      "border-kemet-charcoal",
+      "focus:ring-kemet-gold",
+      "dark:border-dark-border",
+      "dark:focus:ring-dark-accent"
+    );
+
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "text-red-600 text-sm mt-1 font-medium";
+    errorDiv.textContent = message;
+    errorDiv.id = `error-${field.id}`;
+
+    const fieldContainer = field.parentElement;
+    if (fieldContainer && !fieldContainer.querySelector(`#error-${field.id}`)) {
+      fieldContainer.appendChild(errorDiv);
+    }
+  }
+
+  function clearFieldError(field) {
+    if (!field) return;
+
+    field.classList.remove("border-red-500", "focus:ring-red-500");
+    field.classList.add(
+      "border-kemet-charcoal",
+      "focus:ring-kemet-gold",
+      "dark:border-dark-border",
+      "dark:focus:ring-dark-accent"
+    );
+
+    const errorDiv = document.getElementById(`error-${field.id}`);
+    if (errorDiv) {
+      errorDiv.remove();
+    }
   }
 
   function setupContactForm() {
     const contactForm = document.getElementById(CONTACT_FORM_ID);
     if (!contactForm) return;
+
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const messageField = document.getElementById("message");
+
+    [nameField, emailField, messageField].forEach((field) => {
+      if (field) {
+        field.addEventListener("blur", () => validateField(field));
+        field.addEventListener("input", () => clearFieldError(field));
+      }
+    });
+
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const isNameValid = validateField(nameField);
+      const isEmailValid = validateField(emailField);
+      const isMessageValid = validateField(messageField);
+
+      if (!isNameValid || !isEmailValid || !isMessageValid) {
+        showFormStatus(
+          "Please correct the errors above and try again.",
+          "text-center mt-4 text-red-600 font-medium"
+        );
+        return;
+      }
+
       showFormStatus(
         "Sending your message...",
         "text-center mt-4 text-kemet-blue font-medium"
       );
+
       const formData = new FormData(contactForm);
       fetch(contactForm.action, {
         method: "POST",
@@ -127,6 +237,9 @@ document.addEventListener("DOMContentLoaded", function () {
               "text-center mt-4 text-kemet-green font-medium"
             );
             contactForm.reset();
+            [nameField, emailField, messageField].forEach((field) => {
+              clearFieldError(field);
+            });
           } else {
             showFormStatus(
               "Sorry, there was a problem sending your message. Please try again later.",
