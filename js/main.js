@@ -1,9 +1,3 @@
-// main.js - Main JavaScript file for Muaz Al-Jabali's portfolio website
-// Handles theme switching, mobile menu, form validation, animations, and interactions
-
-// ========================================
-// THEME MANAGEMENT
-// ========================================
 document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("themeToggle");
   const themeSwitchKnob = document.getElementById("themeSwitchKnob");
@@ -26,12 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     dark = !dark;
     setTheme(dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
+    this.blur();
   });
 });
-
-// ========================================
-// GENERAL UTILITIES AND INTERACTIONS
-// ========================================
 document.addEventListener("DOMContentLoaded", function () {
   const YEAR_ELEMENT_ID = "year";
   const MOBILE_MENU_BUTTON_ID = "mobileMenuButton";
@@ -41,18 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const FADE_IN_THRESHOLD = 0.15;
   const FORM_STATUS_TIMEOUT = 5000;
   const FORM_SEND_DELAY = 1500;
-
   function getHeaderOffset() {
     const header = document.getElementById("header");
     if (!header) return 0;
     return Math.ceil(header.getBoundingClientRect().height);
   }
-
   function setCurrentYear() {
     const yEl = document.getElementById(YEAR_ELEMENT_ID);
     if (yEl) yEl.textContent = new Date().getFullYear();
   }
-
   function toggleMobileMenu() {
     const mobileMenuButton = document.getElementById(MOBILE_MENU_BUTTON_ID);
     const mobileMenu = document.getElementById(MOBILE_MENU_ID);
@@ -61,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileMenuButton.getAttribute("aria-expanded") === "true";
     mobileMenu.classList.toggle("hidden");
     mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
+    mobileMenuButton.blur();
   }
-
   function closeMobileMenu() {
     const mobileMenuButton = document.getElementById(MOBILE_MENU_BUTTON_ID);
     const mobileMenu = document.getElementById(MOBILE_MENU_ID);
@@ -70,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.classList.add("hidden");
     mobileMenuButton.setAttribute("aria-expanded", "false");
   }
-
   function setupMobileMenu() {
     const mobileMenuButton = document.getElementById(MOBILE_MENU_BUTTON_ID);
     const mobileMenu = document.getElementById(MOBILE_MENU_ID);
@@ -78,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenuButton.addEventListener("click", toggleMobileMenu);
     const links = mobileMenu.querySelectorAll("a");
     links.forEach((link) => {
-      link.addEventListener("click", closeMobileMenu);
+      link.addEventListener("click", function () {
+        closeMobileMenu();
+        this.blur();
+      });
     });
     document.addEventListener("click", (e) => {
       if (
@@ -90,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   function setupFadeInSections() {
     const fadeSections = document.querySelectorAll(".fade-in-section");
     if (!("IntersectionObserver" in window)) {
@@ -107,20 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     fadeSections.forEach((section) => observer.observe(section));
   }
-
-  // ========================================
-  // FORM VALIDATION
-  // ========================================
   function validateField(field) {
     if (!field) return true;
-
     const value = field.value.trim();
     const fieldName = field.name;
     let isValid = true;
     let errorMessage = "";
-
     clearFieldError(field);
-
     switch (fieldName) {
       case "name":
         if (!value) {
@@ -131,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
           isValid = false;
         }
         break;
-
       case "email":
         if (!value) {
           errorMessage = "Email is required";
@@ -144,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
         break;
-
       case "message":
         if (!value) {
           errorMessage = "Message is required";
@@ -155,17 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         break;
     }
-
     if (!isValid) {
       showFieldError(field, errorMessage);
     }
-
     return isValid;
   }
-
   function showFieldError(field, message) {
     if (!field) return;
-
     field.classList.add("border-red-500", "focus:ring-red-500");
     field.classList.remove(
       "border-kemet-charcoal",
@@ -173,21 +149,17 @@ document.addEventListener("DOMContentLoaded", function () {
       "dark:border-dark-border",
       "dark:focus:ring-dark-accent"
     );
-
     const errorDiv = document.createElement("div");
     errorDiv.className = "text-red-600 text-sm mt-1 font-medium";
     errorDiv.textContent = message;
     errorDiv.id = `error-${field.id}`;
-
     const fieldContainer = field.parentElement;
     if (fieldContainer && !fieldContainer.querySelector(`#error-${field.id}`)) {
       fieldContainer.appendChild(errorDiv);
     }
   }
-
   function clearFieldError(field) {
     if (!field) return;
-
     field.classList.remove("border-red-500", "focus:ring-red-500");
     field.classList.add(
       "border-kemet-charcoal",
@@ -195,38 +167,28 @@ document.addEventListener("DOMContentLoaded", function () {
       "dark:border-dark-border",
       "dark:focus:ring-dark-accent"
     );
-
     const errorDiv = document.getElementById(`error-${field.id}`);
     if (errorDiv) {
       errorDiv.remove();
     }
   }
-
-  // ========================================
-  // CONTACT FORM HANDLING
-  // ========================================
   function setupContactForm() {
     const contactForm = document.getElementById(CONTACT_FORM_ID);
     if (!contactForm) return;
-
     const nameField = document.getElementById("name");
     const emailField = document.getElementById("email");
     const messageField = document.getElementById("message");
-
     [nameField, emailField, messageField].forEach((field) => {
       if (field) {
         field.addEventListener("blur", () => validateField(field));
         field.addEventListener("input", () => clearFieldError(field));
       }
     });
-
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
       const isNameValid = validateField(nameField);
       const isEmailValid = validateField(emailField);
       const isMessageValid = validateField(messageField);
-
       if (!isNameValid || !isEmailValid || !isMessageValid) {
         showFormStatus(
           "Please correct the errors above and try again.",
@@ -234,12 +196,10 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         return;
       }
-
       showFormStatus(
         "Sending your message...",
         "text-center mt-4 text-kemet-blue font-medium"
       );
-
       const formData = new FormData(contactForm);
       fetch(contactForm.action, {
         method: "POST",
@@ -271,10 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   }
-
-  // ========================================
-  // NAVIGATION AND SCROLLING
-  // ========================================
   function scrollToSection(targetId) {
     const targetElement = document.querySelector(targetId);
     if (!targetElement) return;
@@ -290,7 +246,6 @@ document.addEventListener("DOMContentLoaded", function () {
     targetElement.setAttribute("tabindex", "-1");
     targetElement.focus({ preventScroll: true });
   }
-
   function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
@@ -301,19 +256,15 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-  // ========================================
-  // ADDITIONAL FEATURES
-  // ========================================
   function setupResumeActions() {
     const printButton = document.getElementById("resume-print");
     if (printButton) {
       printButton.addEventListener("click", function () {
         window.print();
+        this.blur();
       });
     }
   }
-
   function setupNavStyles() {
     document.querySelectorAll(".nav-link").forEach((link) => {
       link.classList.add(
@@ -344,16 +295,12 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
   }
-
   function setupFieldButtons() {
     const buttons = document.querySelectorAll(".field-button");
     if (!buttons || !buttons.length) return;
     let highlightTimer = null;
-    
     buttons.forEach((btn) => {
-      // Skip the toggle button
       if (btn.id === "toggle-additional-fields") return;
-      
       btn.addEventListener("click", function () {
         buttons.forEach((b) => {
           b.setAttribute("aria-pressed", "false");
@@ -376,11 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
             card.classList.add("skill-dimmed");
           }
         });
-        
-        // Clear any existing timer
         if (highlightTimer) clearTimeout(highlightTimer);
-        
-        // Reset after 1 second
         highlightTimer = setTimeout(() => {
           buttons.forEach((b) => {
             b.setAttribute("aria-pressed", "false");
@@ -390,25 +333,23 @@ document.addEventListener("DOMContentLoaded", function () {
             card.classList.remove("skill-highlight", "skill-dimmed");
           });
         }, 1000);
+        this.blur();
       });
     });
   }
-
   function setupAdditionalFieldsToggle() {
     const toggleButton = document.getElementById("toggle-additional-fields");
     const additionalFields = document.getElementById("additional-fields");
     const homeSection = document.getElementById("home");
-
     if (!toggleButton || !additionalFields || !homeSection) return;
-
-    let isExpanded = false; // Start as collapsed since fields are initially hidden
-
-    toggleButton.addEventListener("click", function(e) {
+    let isExpanded = false;
+    const arrowIcon = document.getElementById("arrow-icon");
+    toggleButton.addEventListener("click", function (e) {
       e.preventDefault();
       isExpanded = !isExpanded;
-
       if (isExpanded) {
-        // Show additional fields with animation and expand home section
+        additionalFields.classList.remove("hidden");
+        void additionalFields.offsetWidth;
         additionalFields.classList.remove("opacity-0");
         additionalFields.classList.add("opacity-100");
         homeSection.classList.add("home-expanded");
@@ -416,8 +357,11 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleButton.setAttribute("aria-expanded", "true");
         toggleButton.setAttribute("aria-label", "Hide additional fields");
         toggleButton.classList.add("revealed");
+        if (arrowIcon) {
+          arrowIcon.classList.remove("fa-chevron-down");
+          arrowIcon.classList.add("fa-chevron-up");
+        }
       } else {
-        // Hide additional fields with animation and shrink home section
         additionalFields.classList.remove("opacity-100");
         additionalFields.classList.add("opacity-0");
         homeSection.classList.add("home-collapsed");
@@ -425,10 +369,19 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleButton.setAttribute("aria-expanded", "false");
         toggleButton.setAttribute("aria-label", "Discover more");
         toggleButton.classList.remove("revealed");
+        if (arrowIcon) {
+          arrowIcon.classList.remove("fa-chevron-up");
+          arrowIcon.classList.add("fa-chevron-down");
+        }
+        setTimeout(function () {
+          if (!isExpanded) {
+            additionalFields.classList.add("hidden");
+          }
+        }, 500);
       }
+      this.blur();
     });
   }
-
   function equalizeCardHeights() {
     const projectCards = document.querySelectorAll(".project-card");
     let maxHeight = 0;
@@ -440,7 +393,6 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.height = maxHeight + "px";
     });
   }
-
   function adjustDividerHeight() {
     const skillsSection = document.querySelector("#skills");
     const divider = document.getElementById("skills-divider");
@@ -452,7 +404,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-
   function equalizeSkillHeights() {
     const allSkillCards = document.querySelectorAll(".skills-grid > div");
     let maxHeight = 0;
@@ -465,7 +416,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     adjustDividerHeight();
   }
-
   setCurrentYear();
   setupMobileMenu();
   setupFadeInSections();
@@ -475,7 +425,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupNavStyles();
   setupFieldButtons();
   setupAdditionalFieldsToggle();
-
   const emailIcon = document.getElementById("email-icon");
   const emailTooltip = document.getElementById("email-tooltip");
   let emailTooltipTimer = null;
@@ -489,9 +438,9 @@ document.addEventListener("DOMContentLoaded", function () {
         emailTooltip.style.visibility = "";
         emailTooltip.style.opacity = "";
       }, 2000);
+      this.blur();
     });
   }
-
   window.addEventListener("load", function () {
     equalizeCardHeights();
     equalizeSkillHeights();
@@ -499,5 +448,30 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     equalizeCardHeights();
     equalizeSkillHeights();
+  });
+  document.addEventListener("click", function (e) {
+    const target = e.target;
+    const hasFocusClass =
+      target.classList.contains("social-link") ||
+      target.classList.contains("nav-link") ||
+      target.classList.contains("mobile-nav-link") ||
+      target.closest(".social-link") ||
+      target.closest(".nav-link") ||
+      target.closest(".mobile-nav-link");
+    if (hasFocusClass) {
+      const clickableElement =
+        target.classList.contains("social-link") ||
+        target.classList.contains("nav-link") ||
+        target.classList.contains("mobile-nav-link")
+          ? target
+          : target.closest(".social-link") ||
+            target.closest(".nav-link") ||
+            target.closest(".mobile-nav-link");
+      if (clickableElement) {
+        setTimeout(() => {
+          clickableElement.blur();
+        }, 0);
+      }
+    }
   });
 });
