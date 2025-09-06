@@ -707,33 +707,47 @@ button {
 
 /* Home section dynamic height */
 #home {
-  transition: min-height 0.5s ease-in-out;
+  transition: padding-bottom 0.5s ease-in-out;
+  position: relative;
 }
 
 #home.home-collapsed {
-  min-height: 70vh;
+  padding-bottom: 2rem;
 }
 
 #home.home-expanded {
-  min-height: 90vh;
+  padding-bottom: 8rem;
 }
 
 /* Default state - collapsed */
 #home:not(.home-expanded):not(.home-collapsed) {
-  min-height: 70vh;
+  padding-bottom: 2rem;
+}
+
+/* Ensure background extends to cover the padding area */
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1;
+  border-radius: inherit;
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   #home.home-collapsed {
-    min-height: 60vh;
+    padding-bottom: 1.5rem;
   }
 
   #home.home-expanded {
-    min-height: 80vh;
+    padding-bottom: 6rem;
   }
 
   #home:not(.home-expanded):not(.home-collapsed) {
-    min-height: 60vh;
+    padding-bottom: 1.5rem;
   }
 }
