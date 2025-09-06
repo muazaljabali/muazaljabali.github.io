@@ -712,16 +712,16 @@ button {
 }
 
 #home.home-collapsed {
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 #home.home-expanded {
-  padding-bottom: 8rem;
+  padding-bottom: 6rem;
 }
 
 /* Default state - collapsed */
 #home:not(.home-expanded):not(.home-collapsed) {
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Ensure background extends to cover the padding area */
@@ -740,14 +740,14 @@ button {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   #home.home-collapsed {
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
   }
 
   #home.home-expanded {
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
   }
 
   #home:not(.home-expanded):not(.home-collapsed) {
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
   }
 }
