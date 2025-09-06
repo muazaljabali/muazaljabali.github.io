@@ -1,3 +1,9 @@
+// main.js - Main JavaScript file for Muaz Al-Jabali's portfolio website
+// Handles theme switching, mobile menu, form validation, animations, and interactions
+
+// ========================================
+// THEME MANAGEMENT
+// ========================================
 document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("themeToggle");
   const themeSwitchKnob = document.getElementById("themeSwitchKnob");
@@ -22,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("theme", dark ? "dark" : "light");
   });
 });
+
+// ========================================
+// GENERAL UTILITIES AND INTERACTIONS
+// ========================================
 document.addEventListener("DOMContentLoaded", function () {
   const YEAR_ELEMENT_ID = "year";
   const MOBILE_MENU_BUTTON_ID = "mobileMenuButton";
@@ -98,6 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fadeSections.forEach((section) => observer.observe(section));
   }
 
+  // ========================================
+  // FORM VALIDATION
+  // ========================================
   function validateField(field) {
     if (!field) return true;
 
@@ -189,6 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // ========================================
+  // CONTACT FORM HANDLING
+  // ========================================
   function setupContactForm() {
     const contactForm = document.getElementById(CONTACT_FORM_ID);
     if (!contactForm) return;
@@ -256,6 +272,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ========================================
+  // NAVIGATION AND SCROLLING
+  // ========================================
   function scrollToSection(targetId) {
     const targetElement = document.querySelector(targetId);
     if (!targetElement) return;
@@ -283,6 +302,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ========================================
+  // ADDITIONAL FEATURES
+  // ========================================
   function setupResumeActions() {
     const printButton = document.getElementById("resume-print");
     if (printButton) {
@@ -466,7 +488,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".field-button");
     if (!buttons || !buttons.length) return;
     let highlightTimer = null;
+    
     buttons.forEach((btn) => {
+      // Skip the toggle button
+      if (btn.id === "toggle-additional-fields") return;
+      
       btn.addEventListener("click", function () {
         buttons.forEach((b) => {
           b.setAttribute("aria-pressed", "false");
@@ -479,27 +505,61 @@ document.addEventListener("DOMContentLoaded", function () {
         const skillCards = document.querySelectorAll("[data-fields]");
         skillCards.forEach((card) => {
           const fields = (card.dataset.fields || "")
-            .split(",")
+            .split(" ")
             .map((s) => s.trim());
           if (fields.includes(field)) {
             card.classList.add("skill-highlight");
-            card.classList.remove("skill-fadeout");
+            card.classList.remove("skill-dimmed");
           } else {
             card.classList.remove("skill-highlight");
-            card.classList.remove("skill-fadeout");
+            card.classList.add("skill-dimmed");
           }
         });
+        
+        // Clear any existing timer
         if (highlightTimer) clearTimeout(highlightTimer);
+        
+        // Reset after 1 second
         highlightTimer = setTimeout(() => {
           buttons.forEach((b) => {
             b.setAttribute("aria-pressed", "false");
             b.classList.remove("active");
           });
           skillCards.forEach((card) => {
-            card.classList.remove("skill-highlight");
+            card.classList.remove("skill-highlight", "skill-dimmed");
           });
         }, 1000);
       });
+    });
+  }
+
+  function setupAdditionalFieldsToggle() {
+    const toggleButton = document.getElementById("toggle-additional-fields");
+    const additionalFields = document.getElementById("additional-fields");
+    
+    if (!toggleButton || !additionalFields) return;
+    
+    let isExpanded = false; // Start as collapsed since fields are initially hidden
+    
+    toggleButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      isExpanded = !isExpanded;
+      
+      if (isExpanded) {
+        // Show additional fields with animation
+        additionalFields.classList.remove("opacity-0");
+        additionalFields.classList.add("opacity-100");
+        toggleButton.setAttribute("aria-expanded", "true");
+        toggleButton.setAttribute("aria-label", "Hide additional fields");
+        toggleButton.classList.add("revealed");
+      } else {
+        // Hide additional fields with animation
+        additionalFields.classList.remove("opacity-100");
+        additionalFields.classList.add("opacity-0");
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.setAttribute("aria-label", "Discover more");
+        toggleButton.classList.remove("revealed");
+      }
     });
   }
 
@@ -549,6 +609,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupAstCvModal();
   setupNavStyles();
   setupFieldButtons();
+  setupAdditionalFieldsToggle();
 
   const emailIcon = document.getElementById("email-icon");
   const emailTooltip = document.getElementById("email-tooltip");
